@@ -38,10 +38,11 @@ function updateLibraryShelf() {
 
     library.forEach(book => {
         const bookCard = createBookCard();
+
         bookCard.title.textContent = book.title;
         bookCard.author.textContent = book.author;
         bookCard.pages.textContent += book.pages;
-        if (bookCard.read) {
+        if (book.haveRead) {
             bookCard.read.textContent += "Yes";
         } else bookCard.read.textContent += "No";
 
@@ -68,7 +69,7 @@ function createBookCard() {
 
     const read = document.createElement("p");
     read.classList.add("read");
-    read.textContent = "Have read before:";
+    read.textContent = "Have read before: ";
     card.appendChild(read);
 
     const bookCard = {
