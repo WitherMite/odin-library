@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    place-content: center;
+}
+
+.library-container {
+    width: 80%;
+    background-color: red;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 450px);
+}
