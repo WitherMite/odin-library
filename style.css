@@ -12,12 +12,10 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    height: 200vh;
 }
 
 dialog {
     margin: 15vh auto;
-    padding: 1rem;
     font: inherit;
     color: inherit;
     border: none;
@@ -32,8 +30,29 @@ dialog {
     gap: 1.5rem;
 }
 
-.card {
+.card,
+form {
+    position: relative;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.card,
+.new-book-btn {
+    box-shadow: 10px 10px 15px 0px rgb(0,0,0);
+}
+
+.card > h1,
+form > h1 {
+    padding-right: calc(1rem + 25px);
+    align-self: center;
+}
+
+.card > h2 {
+    align-self: end;
 }
 
 button {
@@ -49,6 +68,9 @@ button > img {
 
 .delete-btn,
 .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     background: none;
     padding: 0;
 }
