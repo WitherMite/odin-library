@@ -5,13 +5,23 @@
 }
 
 body {
-    display: grid;
-    place-content: center;
+    display: flex;
+    justify-content: center;
+    background-color: #1a1a1a;
+    color: rgb(230, 228, 228);
 }
 
 .library-container {
-    width: 80%;
-    background-color: red;
+    width: 100%;
+    padding: 1.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 450px);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 1fr;
+    gap: 1.5rem;
+}
+
+.card {
+    padding: 1rem;
+    background-color: #242424;
+    border-radius: 10px;
 }

@@ -7,16 +7,11 @@ function Book(title, author, pages, haveRead) {
     this.haveRead = haveRead;
 }
 
-const theHobbit = new Book("The Hobbit","J.R.R. Tolkien", 366, true);
-const hpAndSorcStone = new Book("Harry Potter and  the Sorcerer's Stone","J.K. Rowling", 333, true);
-const theHungerGames = new Book("The Hunger Games","Suzanne Collins", 374, true);
-const artemisFowl = new Book("Artemis Fowl","Eoin Colfer", 396, false);
-
 const library = [
-    theHobbit,
-    hpAndSorcStone,
-    theHungerGames,
-    artemisFowl
+    new Book("The Hobbit","J.R.R. Tolkien", 366, true),
+    new Book("Harry Potter and  the Sorcerer's Stone","J.K. Rowling", 333, true),
+    new Book("The Hunger Games","Suzanne Collins", 374, true),
+    new Book("Artemis Fowl","Eoin Colfer", 396, false)
 ];
 
 updateLibraryShelf();
@@ -29,6 +24,7 @@ function addBookToLibrary() {
 
     const book = new Book (title, author, pages, haveRead);
     library.push(book);
+    updateLibraryShelf();
 }
 
 function updateLibraryShelf() {
@@ -36,18 +32,20 @@ function updateLibraryShelf() {
         SHELF.removeChild(SHELF.firstChild);
     }
 
-    library.forEach(book => {
-        const bookCard = createBookCard();
+    library.forEach(addBooktoShelf);
+}
 
-        bookCard.title.textContent = book.title;
-        bookCard.author.textContent = book.author;
-        bookCard.pages.textContent += book.pages;
-        if (book.haveRead) {
-            bookCard.read.textContent += "Yes";
-        } else bookCard.read.textContent += "No";
+function addBooktoShelf(book) {
+    const bookCard = createBookCard();
 
-        SHELF.appendChild(bookCard.card);
-    });
+    bookCard.title.textContent = book.title;
+    bookCard.author.textContent = book.author;
+    bookCard.pages.textContent += book.pages;
+    if (book.haveRead) {
+        bookCard.read.textContent += "Yes";
+    } else bookCard.read.textContent += "No";
+
+    SHELF.appendChild(bookCard.card);
 }
 
 function createBookCard() {
