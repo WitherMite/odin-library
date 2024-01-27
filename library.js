@@ -1,4 +1,6 @@
 const SHELF = document.querySelector(".library-container");
+const NEW_BOOK_BTN = document.querySelector(".new-book-btn");
+const MODAL = document.querySelector("#new-book-modal");
 
 function Book(title, author, pages, haveRead) {
     this.title = title;
@@ -15,6 +17,10 @@ const library = [
 ];
 
 updateLibraryShelf();
+
+NEW_BOOK_BTN.addEventListener("click",() => {
+    MODAL.showModal();
+});
 
 function addBookToLibrary() {
     const title = prompt("Title of book");

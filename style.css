@@ -5,23 +5,37 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
+    padding: 1.5rem;
     background-color: #1a1a1a;
     color: rgb(230, 228, 228);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .library-container {
     width: 100%;
-    padding: 1.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-auto-rows: 1fr;
     gap: 1.5rem;
 }
 
-.card {
-    padding: 1rem;
+.card,
+.new-book-btn {
     background-color: #242424;
     border-radius: 10px;
+}
+
+.new-book-btn {
+    font: inherit;
+    color: inherit;
+    border: none;
+    padding: 1rem 1.5rem;
+    flex: 0 auto;
+}
+
+.card {
+    padding: 1rem;
 }
