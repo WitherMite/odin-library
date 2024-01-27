@@ -12,6 +12,16 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    height: 200vh;
+}
+
+dialog {
+    margin: 15vh auto;
+    padding: 1rem;
+    font: inherit;
+    color: inherit;
+    border: none;
+    box-shadow: 30px 30px 115px 15px rgb(0,0,0);
 }
 
 .library-container {
@@ -23,7 +33,8 @@ body {
 }
 
 .card,
-.new-book-btn {
+.new-book-btn,
+dialog {
     background-color: #242424;
     border-radius: 10px;
 }

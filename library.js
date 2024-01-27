@@ -18,7 +18,7 @@ const library = [
 
 updateLibraryShelf();
 
-NEW_BOOK_BTN.addEventListener("click",() => {
+NEW_BOOK_BTN.addEventListener("click", () => {
     MODAL.showModal();
 });
 
