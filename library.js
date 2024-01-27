@@ -34,16 +34,16 @@ updateLibraryShelf();
 
 function addBookToLibrary(e) {
     e.preventDefault();
-    
-    const title = prompt("Title of book");
-    const author = prompt("Author of book");
-    const pages = Number(prompt("Number of pages"));
-    const haveRead = confirm("Have you read the book?");
 
-    const book = new Book (title, author, pages, haveRead);
-    library.push(book);
+    const title = FORM.querySelector("#book-title").value;
+    const author = FORM.querySelector("#book-author").value;
+    const pages = FORM.querySelector("#book-pages").value;
+    const haveRead = FORM.querySelector("#book-read").value;
+
+    library.push(new Book (title, author, pages, haveRead));
     updateLibraryShelf();
     FORM.reset();
+    MODAL.close();
 }
 
 function updateLibraryShelf() {
