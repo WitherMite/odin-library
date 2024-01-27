@@ -10,8 +10,8 @@
   <button class="new-book-btn">New Book</button>
   <div class="library-container"></div>
   <dialog id="new-book-modal">
-    <form action="dialog">
-      <button type="button"><img src="" alt=""></button>
+    <form id="new-book-form" action="dialog">
+      <button class="close-btn" type="button"><img src="" alt=""></button>
       <h1>Enter book details</h1>
       <div>
         <label for="">Title</label>
@@ -29,7 +29,7 @@
         <label for="">Have you read it?</label>
         <input type="checkbox">
       </div>
-      <button type="submit">Submit</button>
+      <button class="submit-btn" type="submit">Submit</button>
     </form>
   </dialog>
   <script src="library.js"></script>

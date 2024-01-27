@@ -1,6 +1,10 @@
 const SHELF = document.querySelector(".library-container");
 const NEW_BOOK_BTN = document.querySelector(".new-book-btn");
 const MODAL = document.querySelector("#new-book-modal");
+const FORM = document.querySelector("#new-book-form");
+const CLOSE_BTN = document.querySelector(".close-btn");
+const SUBMIT_BTN = document.querySelector(".submit-btn");
+
 
 function Book(title, author, pages, haveRead) {
     this.title = title;
@@ -16,13 +20,21 @@ const library = [
     new Book("Artemis Fowl","Eoin Colfer", 396, false)
 ];
 
-updateLibraryShelf();
-
 NEW_BOOK_BTN.addEventListener("click", () => {
     MODAL.showModal();
 });
 
-function addBookToLibrary() {
+CLOSE_BTN.addEventListener("click", () => {
+    MODAL.close();
+});
+
+SUBMIT_BTN.addEventListener("click", addBookToLibrary);
+
+updateLibraryShelf();
+
+function addBookToLibrary(e) {
+    e.preventDefault();
+    
     const title = prompt("Title of book");
     const author = prompt("Author of book");
     const pages = Number(prompt("Number of pages"));
@@ -31,6 +43,7 @@ function addBookToLibrary() {
     const book = new Book (title, author, pages, haveRead);
     library.push(book);
     updateLibraryShelf();
+    FORM.reset();
 }
 
 function updateLibraryShelf() {
