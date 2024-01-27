@@ -34,6 +34,7 @@ updateLibraryShelf();
 
 function addBookToLibrary(e) {
     e.preventDefault();
+    if (!FORM.checkValidity()) return;
 
     const title = FORM.querySelector("#book-title").value;
     const author = FORM.querySelector("#book-author").value;
@@ -54,8 +55,10 @@ function updateLibraryShelf() {
     library.forEach(addBooktoShelf);
 }
 
-function addBooktoShelf(book) {
+function addBooktoShelf(book, index) {
     const bookCard = createBookCard();
+    bookCard.delBtn.dataset["libraryIndex"] = index;
+    bookCard.delBtn.addEventListener("click", deleteBook);
 
     bookCard.title.textContent = book.title;
     bookCard.author.textContent = book.author;
@@ -67,34 +70,43 @@ function addBooktoShelf(book) {
     SHELF.appendChild(bookCard.card);
 }
 
+function deleteBook() {
+    const libraryIndex = Number(this.dataset["libraryIndex"]);
+    library.splice(libraryIndex, 1);
+    updateLibraryShelf();
+}
+
 function createBookCard() {
     const card = document.createElement("div");
     card.classList.add("card");
 
     const title = document.createElement("h1");
-    title.classList.add("title");
     card.appendChild(title);
 
     const author = document.createElement("h2");
-    author.classList.add("author");
     card.appendChild(author);
 
     const pages = document.createElement("p");
-    pages.classList.add("pages");
     pages.textContent = "Pages: ";
     card.appendChild(pages);
 
     const read = document.createElement("p");
-    read.classList.add("read");
     read.textContent = "Have read before: ";
     card.appendChild(read);
+
+    const delBtn = document.createElement("button");
+    const delIcon = document.createElement("img");
+    delBtn.classList.add("delete-book");
+    delBtn.appendChild(delIcon);
+    card.appendChild(delBtn);
 
     const bookCard = {
         card: card,
         title: title,
         author: author,
         pages: pages,
-        read: read
+        read: read,
+        delBtn: delBtn
     }
     return bookCard;
 }
