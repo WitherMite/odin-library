@@ -53,9 +53,10 @@ function updateLibraryShelf() {
 
 function addBooktoShelf(book, index) {
     const bookCard = createBookCard();
+    
     bookCard.delBtn.dataset["libraryIndex"] = index;
-    bookCard.readBtn.dataset["libraryIndex"] = index;
     bookCard.delBtn.addEventListener("click", deleteBook);
+    bookCard.readBtn.dataset["libraryIndex"] = index;
     bookCard.readBtn.addEventListener("click", readBook);
 
     bookCard.title.textContent = book.title;
@@ -85,10 +86,11 @@ function createBookCard() {
     card.classList.add("card");
 
     const delBtn = document.createElement("button");
-    const delIcon = document.createElement("img");
-    delBtn.classList.add("delete-book");
-    delBtn.appendChild(delIcon);
+    delBtn.classList.add("delete-btn");
     card.appendChild(delBtn);
+    const delIcon = document.createElement("img");
+    delIcon.src = "icons/delete.svg";
+    delBtn.appendChild(delIcon);
 
     const title = document.createElement("h1");
     card.appendChild(title);
@@ -105,7 +107,7 @@ function createBookCard() {
     card.appendChild(read);
 
     const readBtn = document.createElement("button");
-    readBtn.classList.add("read-book");
+    readBtn.classList.add("read-btn");
     readBtn.textContent = "Toggle if read";
     card.appendChild(readBtn);
 

@@ -32,6 +32,27 @@ dialog {
     gap: 1.5rem;
 }
 
+.card {
+    padding: 1rem;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    border: none;
+    padding: 1ch 2ch;
+}
+
+button > img {
+    width: 25px;
+}
+
+.delete-btn,
+.close-btn {
+    background: none;
+    padding: 0;
+}
+
 .card,
 .new-book-btn,
 dialog {
@@ -39,14 +60,13 @@ dialog {
     border-radius: 10px;
 }
 
-.new-book-btn {
-    font: inherit;
-    color: inherit;
-    border: none;
-    padding: 1rem 1.5rem;
-    flex: 0 auto;
+.read-btn,
+.submit-btn {
+    background-color: #1a1a1a;
+    border-radius: 10px;
 }
 
-.card {
-    padding: 1rem;
+.new-book-btn {
+    padding: 1rem 1.5rem;
+    flex: 0 auto;
 }
