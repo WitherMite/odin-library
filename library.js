@@ -5,12 +5,14 @@ const FORM = document.querySelector("#new-book-form");
 const CLOSE_BTN = document.querySelector(".close-btn");
 const SUBMIT_BTN = document.querySelector(".submit-btn");
 
-
 function Book(title, author, pages, haveRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.haveRead = haveRead;
+    this.toggleRead = function() {
+        this.haveRead = !this.haveRead;
+    };
 }
 
 const library = [
@@ -20,14 +22,8 @@ const library = [
     new Book("Artemis Fowl","Eoin Colfer", 396, false)
 ];
 
-NEW_BOOK_BTN.addEventListener("click", () => {
-    MODAL.showModal();
-});
-
-CLOSE_BTN.addEventListener("click", () => {
-    MODAL.close();
-});
-
+NEW_BOOK_BTN.addEventListener("click", () => MODAL.showModal());
+CLOSE_BTN.addEventListener("click", () => MODAL.close());
 SUBMIT_BTN.addEventListener("click", addBookToLibrary);
 
 updateLibraryShelf();
@@ -58,7 +54,9 @@ function updateLibraryShelf() {
 function addBooktoShelf(book, index) {
     const bookCard = createBookCard();
     bookCard.delBtn.dataset["libraryIndex"] = index;
+    bookCard.readBtn.dataset["libraryIndex"] = index;
     bookCard.delBtn.addEventListener("click", deleteBook);
+    bookCard.readBtn.addEventListener("click", readBook);
 
     bookCard.title.textContent = book.title;
     bookCard.author.textContent = book.author;
@@ -76,9 +74,21 @@ function deleteBook() {
     updateLibraryShelf();
 }
 
+function readBook() {
+    const libraryIndex = Number(this.dataset["libraryIndex"]);
+    library[libraryIndex].toggleRead();
+    updateLibraryShelf();
+}
+
 function createBookCard() {
     const card = document.createElement("div");
     card.classList.add("card");
+
+    const delBtn = document.createElement("button");
+    const delIcon = document.createElement("img");
+    delBtn.classList.add("delete-book");
+    delBtn.appendChild(delIcon);
+    card.appendChild(delBtn);
 
     const title = document.createElement("h1");
     card.appendChild(title);
@@ -94,11 +104,10 @@ function createBookCard() {
     read.textContent = "Have read before: ";
     card.appendChild(read);
 
-    const delBtn = document.createElement("button");
-    const delIcon = document.createElement("img");
-    delBtn.classList.add("delete-book");
-    delBtn.appendChild(delIcon);
-    card.appendChild(delBtn);
+    const readBtn = document.createElement("button");
+    readBtn.classList.add("read-book");
+    readBtn.textContent = "Toggle if read";
+    card.appendChild(readBtn);
 
     const bookCard = {
         card: card,
@@ -106,7 +115,8 @@ function createBookCard() {
         author: author,
         pages: pages,
         read: read,
-        delBtn: delBtn
+        delBtn: delBtn,
+        readBtn: readBtn
     }
     return bookCard;
 }
