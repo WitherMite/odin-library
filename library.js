@@ -82,43 +82,16 @@ function readBook() {
 }
 
 function createBookCard() {
-    const card = document.createElement("div");
-    card.classList.add("card");
+    const template = document.querySelector("#card-template");
+    const card = template.content.cloneNode(true);
 
-    const delBtn = document.createElement("button");
-    delBtn.classList.add("delete-btn");
-    card.appendChild(delBtn);
-    const delIcon = document.createElement("img");
-    delIcon.src = "icons/delete.svg";
-    delBtn.appendChild(delIcon);
-
-    const title = document.createElement("h1");
-    card.appendChild(title);
-
-    const author = document.createElement("h2");
-    card.appendChild(author);
-
-    const pages = document.createElement("p");
-    pages.textContent = "Pages: ";
-    card.appendChild(pages);
-
-    const read = document.createElement("p");
-    read.textContent = "Have read before: ";
-    card.appendChild(read);
-
-    const readBtn = document.createElement("button");
-    readBtn.classList.add("read-btn");
-    readBtn.textContent = "Toggle if read";
-    card.appendChild(readBtn);
-
-    const bookCard = {
+    return {
         card,
-        title,
-        author,
-        pages,
-        read,
-        delBtn,
-        readBtn
-    }
-    return bookCard;
+        delBtn: card.querySelector(".delete-btn"),
+        title: card.querySelector(".title"),
+        author: card.querySelector(".author"),
+        pages: card.querySelector(".pages"),
+        read: card.querySelector(".read"),
+        readBtn: card.querySelector(".read-btn")
+    };
 }
