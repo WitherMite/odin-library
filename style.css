@@ -51,6 +51,10 @@ label {
     margin-right: auto;
 }
 
+label[for="book-read"] {
+    margin: 0;
+}
+
 .card,
 .new-book-btn {
     box-shadow: 10px 10px 15px 0px rgb(0,0,0);
