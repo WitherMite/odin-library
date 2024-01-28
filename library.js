@@ -30,7 +30,7 @@ updateLibraryShelf();
 
 function addBookToLibrary(e) {
     e.preventDefault();
-    if (!FORM.checkValidity()) return;
+    if (!FORM.reportValidity()) return;
 
     const title = FORM.querySelector("#book-title").value;
     const author = FORM.querySelector("#book-author").value;
@@ -112,13 +112,13 @@ function createBookCard() {
     card.appendChild(readBtn);
 
     const bookCard = {
-        card: card,
-        title: title,
-        author: author,
-        pages: pages,
-        read: read,
-        delBtn: delBtn,
-        readBtn: readBtn
+        card,
+        title,
+        author,
+        pages,
+        read,
+        delBtn,
+        readBtn
     }
     return bookCard;
 }
