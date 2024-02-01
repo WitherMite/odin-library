@@ -5,14 +5,17 @@ const FORM = document.querySelector("#new-book-form");
 const CLOSE_BTN = document.querySelector(".close-btn");
 const SUBMIT_BTN = document.querySelector(".submit-btn");
 
-function Book(title, author, pages, haveRead) {
+class Book {
+  constructor(title, author, pages, haveRead) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.haveRead = haveRead;
-  this.toggleRead = function () {
+  }
+  
+  toggleRead() {
     this.haveRead = !this.haveRead;
-  };
+  }
 }
 
 const library = [
